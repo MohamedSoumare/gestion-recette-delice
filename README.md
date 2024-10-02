@@ -1,6 +1,7 @@
 ## Gestion des recettes
 
-Ceci est l'API backend pour l'application de gestion de recettes, développée avec Express.js. Elle fournit une interface RESTful pour gérer les recettes, permettant de créer, lire, mettre à jour et supprimer des recettes dans une base de données. L'API est conçue pour être consommée par le frontend afin de gérer les opérations sur les recettes.
+Ceci est l'API backend pour l'application de gestion de recettes, développée avec Express.js. Elle fournit une interface RESTful pour gérer les recettes d'un restaurant delice, permettant de créer, lire, mettre à jour et supprimer des recettes dans une base de données. Le projet inclut des tests unitaires, des outils d'analyse et de formatage de code (ESLint, Prettier), ainsi qu'une containerisation avec **Docker** pour le déploiement.
+
 
 ## Prérequis
 
@@ -60,7 +61,7 @@ MYSQL_DATABASE=gestion_recette_delice
 MYSQL_ROOT_PASSWORD=
 ```
 
-L'API sera accessible à l'adresse `http://localhost:3001`
+L'API sera accessible à l'adresse `http://localhost:3090`
 
 ## Endpoints de l'API
 
@@ -74,7 +75,7 @@ L'API sera accessible à l'adresse `http://localhost:3001`
 ```bash
  {
         "id": 1,
-        "title": "Salade ",
+        "title": "Tarte aux pommes maison",
         "ingredient": "Laitue, Poulet, Parmesan, Croutons, Sauce César",
         "type": "Entrée",
   }
@@ -89,7 +90,7 @@ L'API sera accessible à l'adresse `http://localhost:3001`
 
 ```bash
   {
-   "title": "Salade  datte",
+   "title": "Tarte aux pommes maison",
   "ingredient": "Lait, Poulet, Parmesan, Croutons, Sucre",
   "type": "Dessert",
 
@@ -113,8 +114,8 @@ L'API sera accessible à l'adresse `http://localhost:3001`
 
 ```bash
 {
-        "title": "Salade ",
-        "ingredient": "Laitue, Poulet, Parmesan, Croutons, Sauce César",
+        "title": "Tarte aux pommes maison",
+        "ingredient": "Laitue,Poulet, Parmesan, Croutons",
         "type": "entrée",
  }
 
