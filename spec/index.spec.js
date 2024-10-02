@@ -10,7 +10,11 @@ describe('Recipe tests', () => {
       ingredient: 'Farine, oeufs, lait, chocolat, sucre',
     };
 
-    const result = await Recipe.create(recipe.title, recipe.type, recipe.ingredient);
+    const result = await Recipe.create(
+      recipe.title,
+      recipe.type,
+      recipe.ingredient
+    );
     recipeId = result.insertId;
     const recipeCreated = await Recipe.getById(recipeId);
 
@@ -19,22 +23,25 @@ describe('Recipe tests', () => {
     expect(recipeCreated.title).toBe(recipe.title);
     expect(recipeCreated.type).toBe(recipe.type);
     expect(recipeCreated.ingredient).toBe(recipe.ingredient);
-
   });
 
   it('cannot be created with invalid data', async () => {
     const invalidRecipe = {
-      title: 'Trop court', 
-      type: 'invalid', 
+      title: 'Trop court',
+      type: 'invalid',
       ingredient: 'Trop court',
     };
 
     let errorOccurred = false;
     try {
-      await Recipe.create(invalidRecipe.title, invalidRecipe.type, invalidRecipe.ingredient);
+      await Recipe.create(
+        invalidRecipe.title,
+        invalidRecipe.type,
+        invalidRecipe.ingredient
+      );
     } catch (error) {
       errorOccurred = true;
-      expect(error).toBeInstanceOf(Error); 
+      expect(error).toBeInstanceOf(Error);
     }
 
     expect(errorOccurred).toBe(true);
@@ -45,9 +52,8 @@ describe('Recipe tests', () => {
     expect(recipes).not.toBeNull();
     expect(Array.isArray(recipes)).toBe(true);
 
-    
     recipes.forEach((recipe) => {
-      expect(recipe.title.length).toBeGreaterThan(3); 
+      expect(recipe.title.length).toBeGreaterThan(3);
     });
   });
 
@@ -69,9 +75,9 @@ describe('Recipe tests', () => {
 
   it('cannot update recipe with invalid data', async () => {
     const invalidData = {
-      title: 'Court', 
-      type: 'invalid', 
-      ingredient: 'Trop court', 
+      title: 'Court',
+      type: 'invalid',
+      ingredient: 'Trop court',
     };
 
     let errorOccurred = false;
@@ -97,5 +103,4 @@ describe('Recipe tests', () => {
     const recipe = await Recipe.getById(invalidId);
     expect(recipe).toBeNull();
   });
-
 });

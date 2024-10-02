@@ -20,32 +20,47 @@ Pour configurer le projet, suivez ces étapes :
    cd gestion-recette-api-express
 ```
 
-2. Installer les dépendances :
+2. Accédez au dossier du projet :
+
+```bash
+   cd gestion-recette-api-express
+```
+
+3. Installer les dépendances :
 
 ```bash
    npm install
 ```
 
-3. Démarrer le serveur :
+4. Démarrer le serveur :
 
 ```bash
   npm start
 ```
 
-4. Créez une copie du fichier `.env.example` puis renommer le fichier en `.env` à la racine du projet et mettez vos information pour configuration de la connexion à la base de données et docker compose :
+## Configuration de la base de données
+
+1. Importation de la base de données :
+   Ouvrez le terminal dans le dossier courant, copiez le commande ci-dessous en remplaçant `UserName` par votre `nom d'utilisateur`
 
 ```bash
-    DB_HOST=localhost
-    DB_USER=
-    DB_PASSWORD=
-    DB_NAME=recipes_management_old
-    PORT=3090
-    DB_PORT=3306
-    MYSQL_DATABASE=recipes_management_old
-    MYSQL_ROOT_PASSWORD=
+  mysql -u UserName -p gestion_recette_delice < gestion_recette_delice.sql
 ```
 
-L'API sera accessible à l'adresse http://localhost:3090
+2. Créez une copie du fichier `.env.example` puis renommer le fichier en `.env` à la racine du projet et mettez vos information pour configuration de la connexion à la base de données et docker compose :
+
+```bash
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=
+DB_PASSWORD=
+DB_NAME=gestion_recette_delice
+APP_PORT=3001
+MYSQL_DATABASE=gestion_recette_delice
+MYSQL_ROOT_PASSWORD=
+```
+
+L'API sera accessible à l'adresse `http://localhost:3001`
 
 ## Endpoints de l'API
 
@@ -61,9 +76,7 @@ L'API sera accessible à l'adresse http://localhost:3090
         "id": 1,
         "title": "Salade ",
         "ingredient": "Laitue, Poulet, Parmesan, Croutons, Sauce César",
-        "type": "entrée",
-        "description": "Une salade légère et rafraîchissante avec du poulet grillé, du parmesan et des croûtons croustillants, servie avec une sauce César classique."
-
+        "type": "Entrée",
   }
 ```
 
@@ -78,8 +91,7 @@ L'API sera accessible à l'adresse http://localhost:3090
   {
    "title": "Salade  datte",
   "ingredient": "Lait, Poulet, Parmesan, Croutons, Sucre",
-  "type": "dessert",
-  "description": "Une salade populaire à base de poulet, parmesan, et sauce crémeuse."
+  "type": "Dessert",
 
 }
 ```
@@ -90,7 +102,6 @@ L'API sera accessible à l'adresse http://localhost:3090
 {
     "message": "Recette créée avec succès"
 }
-
 ```
 
 3. Mettre à jour une recette
@@ -105,7 +116,6 @@ L'API sera accessible à l'adresse http://localhost:3090
         "title": "Salade ",
         "ingredient": "Laitue, Poulet, Parmesan, Croutons, Sauce César",
         "type": "entrée",
-        "description": "Une salade légère et rafraîchissante avec du poulet grillé, du parmesan et des croûtons croustillants, servie avec une sauce César classique."
  }
 
 ```
@@ -129,8 +139,13 @@ L'API sera accessible à l'adresse http://localhost:3090
 {
     "message": "Recette supprimée avec succès"
 }
-
 ```
+
+## Collection Postman
+
+Pour tester les différents endpoints de l'API, vous pouvez utiliser la collection Postman incluse dans ce projet. Elle contient toutes les requêtes configurées pour interagir avec l'API.
+
+- **Importer dans Postman** le fichier collection api `recettes_collection.json` et exécuter les requêtes.
 
 ## Tests
 
@@ -184,5 +199,4 @@ npm run format
 
 ## Auteurs
 
-- **[Fatimata Aliou Sall](https://github.com/fatimata-sall)** - Développeuse Full Stack
 - **[Mohamed Soumare](https://github.com/MohamedSoumare)** - Développeur Full Stack

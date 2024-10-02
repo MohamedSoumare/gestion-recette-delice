@@ -31,7 +31,9 @@ const addRequestValidator = [
     .isEmpty()
     .withMessage('Les ingrédients sont requis.')
     .isLength({ min: 10, max: 500 })
-    .withMessage('Les ingrédients doivent comporter entre 10 et 500 caractères.'),
+    .withMessage(
+      'Les ingrédients doivent comporter entre 10 et 500 caractères.'
+    ),
   check('type')
     .not()
     .isEmpty()
@@ -67,7 +69,9 @@ const updateRequestValidator = [
   check('ingredient')
     .optional()
     .isLength({ min: 10, max: 500 })
-    .withMessage('Les ingrédients doivent comporter entre 10 et 500 caractères.'),
+    .withMessage(
+      'Les ingrédients doivent comporter entre 10 et 500 caractères.'
+    ),
   check('type')
     .optional()
     .isIn(['Entrée', 'Plat', 'Dessert'])
