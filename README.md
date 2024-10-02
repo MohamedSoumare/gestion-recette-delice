@@ -51,12 +51,12 @@ Pour configurer le projet, suivez ces étapes :
 2. Créez une copie du fichier `.env.example` puis renommer le fichier en `.env` à la racine du projet et mettez vos information pour configuration de la connexion à la base de données et docker compose :
 
 ```bash
-DB_HOST=localhost
-DB_PORT=3306
-DB_USER=
+DB_HOST=db
+DB_USER=root
 DB_PASSWORD=
 DB_NAME=gestion_recette_delice
-APP_PORT=3001
+PORT=3090
+DB_PORT=3306
 MYSQL_DATABASE=gestion_recette_delice
 MYSQL_ROOT_PASSWORD=
 ```
