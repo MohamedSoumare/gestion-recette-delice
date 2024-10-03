@@ -17,8 +17,8 @@ Pour configurer le projet, suivez ces étapes :
 1. Cloner le dépôt :
 
 ```bash
-   git clone https://github.com/FatimataAliouSall/gestion-recette-api-express.git
-   cd gestion-recette-api-express
+   git clone https://github.com/MohamedSoumare/gestion-recette-delice.git
+   cd gestion-recette-delice
 ```
 
 2. Accédez au dossier du projet :
