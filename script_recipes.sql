@@ -31,7 +31,7 @@ CREATE TABLE `recipes` (
   `type` varchar(10) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `title` (`title`),
-  CONSTRAINT `recipes_chk_1` CHECK ((`type` in (_cp850'entr‚e',_cp850'plat',_cp850'dessert')))
+  CONSTRAINT `recipes_chk_1`
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
