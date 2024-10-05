@@ -47,18 +47,7 @@ Pour configurer le projet, suivez ces étapes :
   mysql -u UserName -p gestion_recette_delice < gestion_recette_delice.sql
 ```
 
-2. Créez une copie du fichier `.env.example` puis renommer le fichier en `.env` à la racine du projet et mettez vos information pour configuration de la connexion à la base de données et docker compose :
-
-```bash
-DB_HOST=db
-DB_USER=root
-DB_PASSWORD=
-DB_NAME=gestion_recette_delice
-PORT=3090
-DB_PORT=3306
-MYSQL_DATABASE=gestion_recette_delice
-MYSQL_ROOT_PASSWORD=
-```
+2. Créez une copie du fichier `.env.example` puis renommer le fichier en `.env` à la racine du projet et mettez vos information pour configuration de la connexion à la base de données :
 
 L'API sera accessible à l'adresse `http://localhost:3090`
 
@@ -162,7 +151,7 @@ Ce projet utilise **ESLint** pour le linting du code et **Prettier** pour le for
 - Eslint
 
 ```bash
- npm run lint:fix
+  npm run lint:fix
 ```
 
 - Prettier
@@ -172,6 +161,9 @@ Ce projet utilise **ESLint** pour le linting du code et **Prettier** pour le for
 ```
 
 ## Conteneurisation et déploiement.
+## Docker 
+
+- Pour exécutez docker compose veuillez ouvrir le fichier `.env` que vous avez puis  remplacer le   `DB_HOST=localhost ` par  `DB_HOST=db` puis exécuter la commande suivante :
 
 1. Lancer les conteneurs existants avec Docker compose :
 
@@ -185,6 +177,7 @@ Ce projet utilise **ESLint** pour le linting du code et **Prettier** pour le for
 ```bash
   docker-compose up -d
 ```
+
 
 ## Auteurs
 

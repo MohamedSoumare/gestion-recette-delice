@@ -47,11 +47,11 @@ const updateRequestValidator = [
   param('id')
     .not()
     .isEmpty()
-    .withMessage('L\'ID de la recette est requis.')
+    .withMessage('ID de la recette est requis.')
     .custom(async (value) => {
       const recipe = await RecipeModel.getById(value);
       if (!recipe) {
-        throw new Error('Cette recette n\'existe pas.');
+        throw new Error('Cette recette est introuvable.');
       }
       return true;
     }),
@@ -83,11 +83,11 @@ const deleteRequestValidator = [
   param('id')
     .not()
     .isEmpty()
-    .withMessage('L\'ID est obligatoire.')
+    .withMessage('ID est obligatoire.')
     .custom(async (value) => {
       const recipe = await RecipeModel.getById(value);
       if (!recipe) {
-        throw new Error('Cette recette n\'existe pas.');
+        throw new Error('Cette recette est introuvable.');
       }
       return true;
     }),
@@ -98,11 +98,11 @@ const getByIdRequestValidator = [
   param('id')
     .not()
     .isEmpty()
-    .withMessage('L\'ID de la recette est requis.')
+    .withMessage('ID de la recette est requis.')
     .custom(async (value) => {
       const recipe = await RecipeModel.getById(value);
       if (!recipe) {
-        throw new Error('Cette recette n\'existe pas.');
+        throw new Error('Cette recette est introuvable.');
       }
       return true;
     }),
