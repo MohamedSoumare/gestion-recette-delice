@@ -2,7 +2,6 @@
 
 Ceci est l'API backend pour l'application de gestion de recettes, développée avec Express.js. Elle fournit une interface RESTful pour gérer les recettes d'un restaurant delice, permettant de créer, lire, mettre à jour et supprimer des recettes dans une base de données. Le projet inclut des tests unitaires, des outils d'analyse et de formatage de code (ESLint, Prettier), ainsi qu'une containerisation avec **Docker** pour le déploiement.
 
-
 ## Prérequis
 
 - Node.js (version 18 ou supérieure)
@@ -68,7 +67,7 @@ L'API sera accessible à l'adresse `http://localhost:3090`
 1. Obtenir toutes les recettes
 
 - Méthode : GET
-- Endpoint : /api/recipes
+- Endpoint : /recipes
 - Description : Récupère toutes les recettes de la base de données.
 - Réponse:
 
@@ -84,7 +83,7 @@ L'API sera accessible à l'adresse `http://localhost:3090`
 2. Créer une recette
 
 - Méthode : POST
-- Endpoint : /api/recipes/add
+- Endpoint : /recipes/add
 - Description : Ajoute une nouvelle recette dans la base de données.
 - Corps de la requette :
 
@@ -108,7 +107,7 @@ L'API sera accessible à l'adresse `http://localhost:3090`
 3. Mettre à jour une recette
 
 - Méthode : PUT
-- Endpoint : /api/recipes/edit/:id
+- Endpoint : /recipes/edit/:id
 - Description : Met à jour une recette par son ID.
 - Corps :
 
@@ -132,7 +131,7 @@ L'API sera accessible à l'adresse `http://localhost:3090`
 5. Supprimer une recette.
 
 - Méthode : DELETE
-- Endpoint : /api/recipes/delete/:id
+- Endpoint : /recipes/delete/:id
 - Description : Supprime une recette par son ID.
   -Réponse :
 
@@ -163,36 +162,25 @@ Ce projet utilise **ESLint** pour le linting du code et **Prettier** pour le for
 - Eslint
 
 ```bash
-npm run lint:fix
+ npm run lint:fix
 ```
 
 - Prettier
 
 ```bash
-npm run format
+ npm run format
 ```
 
 ## Conteneurisation et déploiement.
 
-1. Construire l'image Docker :
+1. Lancer les conteneurs existants avec Docker compose :
 
 ```bash
-  docker build -t votre-nom-utilisateur/nom_image-management-recipe .
+   docker-compose up --build
 ```
 
-2. Tag l'image docker :
-
-```bash
-  docker tag <image-id> votre-nom-utilisateur/nom_image-management-recipe
-```
-
-4. Déployer l'image sur Docker Hub :
-
-```bash
-  docker push votre-nom-utilisateur/nom_image-management-recipe
-```
-
-5. Démarrer l'application conteneurisée avec Docker Compose :
+2. Lancer les conteneurs existants
+   avec Docker compose:
 
 ```bash
   docker-compose up -d

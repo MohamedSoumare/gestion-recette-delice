@@ -1,31 +1,49 @@
 import db from '../config/db.js';
 
-const Recipe = {
-  create: async (title, type, ingredient) => {
-    if (!title) {
-      throw new Error('Title cannot be null');
-    }
-    const query =
-      'INSERT INTO recipes (title, type,ingredient) VALUES (?, ?, ?)';
-    const [result] = await db.query(query, [title, type, ingredient]);
-    return result;
-  },
+class RecipeModel {
+  static async create(title, type, ingredient) {
+    try {
+      const recipeExists = await this.checkRecipe(title);
+      if (recipeExists) {
+        throw new Error(`La recette avec le titre "${title}" existe déjà.`);
+      }
 
-  checkRecipe: async (title) => {
+      // Si elle n'existe pas, on l'ajoute
+      const [result] = await db.query(
+        'INSERT INTO recipes (title, ingredient, type) VALUES (?, ?, ?)',
+        [title, ingredient, type]
+      );
+      return { insertId: result.insertId };
+    } catch (error) {
+      console.error(
+        'Erreur lors de la création de la recette :',
+        error.message
+      );
+      throw error;
+    }
+  }
+
+  static async checkRecipe(title) {
     const [rows] = await db.query(
-      'SELECT COUNT(*) as count FROM recipes WHERE title = ?',
+      'SELECT COUNT(*) AS count FROM recipes WHERE title = ?',
       [title]
     );
     return rows[0].count > 0;
-  },
+  }
 
-  getById: async (id) => {
-    const query = 'SELECT * FROM recipes WHERE id = ?';
-    const [rows] = await db.query(query, [id]);
+  static async getById(id) {
+    const [rows] = await db.query('SELECT * FROM recipes WHERE id = ?', [id]);
     return rows.length > 0 ? rows[0] : null;
-  },
+  }
 
-  update: async (id, updatedData) => {
+  static async update(id, updatedData) {
+    // Vérifie d'abord si la recette existe
+    const recipe = await this.getById(id);
+    if (!recipe) {
+      return { affectedRows: 0 }; // Si la recette n'existe pas, retourne 0
+    }
+
+    // Si la recette existe, on continue la mise à jour
     const query =
       'UPDATE recipes SET title = ?, type = ?, ingredient = ? WHERE id = ?';
     const [result] = await db.query(query, [
@@ -34,20 +52,20 @@ const Recipe = {
       updatedData.ingredient,
       id,
     ]);
-    return result;
-  },
 
-  delete: async (id) => {
+    return { affectedRows: result.affectedRows }; // Retourne le nombre de lignes affectées
+  }
+
+  static async delete(id) {
     const query = 'DELETE FROM recipes WHERE id = ?';
     const [result] = await db.query(query, [id]);
-    return result;
-  },
+    return { affectedRows: result.affectedRows }; // Retourne le nombre de lignes affectées
+  }
 
-  getAll: async () => {
-    const query = 'SELECT * FROM recipes';
-    const [rows] = await db.query(query);
+  static async getAll() {
+    const [rows] = await db.query('SELECT * FROM recipes');
     return rows;
-  },
-};
+  }
+}
 
-export default Recipe;
+export default RecipeModel;

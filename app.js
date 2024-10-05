@@ -7,7 +7,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/api', RecipeRoutes);
+app.use(RecipeRoutes);
 
 const port = process.env.PORT || 3090;
 

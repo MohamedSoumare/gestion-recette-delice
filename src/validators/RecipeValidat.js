@@ -1,6 +1,6 @@
 import { check, param, validationResult } from 'express-validator';
 import { StatusCodes } from 'http-status-codes';
-import Recipe from '../models/RecipeModel.js ';
+import RecipeModel from '../models/RecipeModel.js ';
 
 const handleValidationErrors = (req, res, next) => {
   const errors = validationResult(req);
@@ -20,7 +20,7 @@ const addRequestValidator = [
     .isLength({ min: 5, max: 100 })
     .withMessage('Le titre doit comporter entre 5 et 100 caractères.')
     .custom(async (value) => {
-      const existingRecipe = await Recipe.checkRecipe(value);
+      const existingRecipe = await RecipeModel.checkRecipe(value);
       if (existingRecipe) {
         throw new Error('Cette recette existe déjà.');
       }
@@ -49,7 +49,7 @@ const updateRequestValidator = [
     .isEmpty()
     .withMessage('L\'ID de la recette est requis.')
     .custom(async (value) => {
-      const recipe = await Recipe.getById(value);
+      const recipe = await RecipeModel.getById(value);
       if (!recipe) {
         throw new Error('Cette recette n\'existe pas.');
       }
@@ -60,7 +60,7 @@ const updateRequestValidator = [
     .isLength({ min: 5, max: 100 })
     .withMessage('Le titre doit comporter entre 5 et 100 caractères.')
     .custom(async (value, { req }) => {
-      const existingRecipe = await Recipe.checkRecipe(value);
+      const existingRecipe = await RecipeModel.checkRecipe(value);
       if (existingRecipe && existingRecipe.id !== parseInt(req.params.id)) {
         throw new Error('Ce titre est déjà utilisé par une autre recette.');
       }
@@ -85,7 +85,7 @@ const deleteRequestValidator = [
     .isEmpty()
     .withMessage('L\'ID est obligatoire.')
     .custom(async (value) => {
-      const recipe = await Recipe.getById(value);
+      const recipe = await RecipeModel.getById(value);
       if (!recipe) {
         throw new Error('Cette recette n\'existe pas.');
       }
@@ -100,7 +100,7 @@ const getByIdRequestValidator = [
     .isEmpty()
     .withMessage('L\'ID de la recette est requis.')
     .custom(async (value) => {
-      const recipe = await Recipe.getById(value);
+      const recipe = await RecipeModel.getById(value);
       if (!recipe) {
         throw new Error('Cette recette n\'existe pas.');
       }

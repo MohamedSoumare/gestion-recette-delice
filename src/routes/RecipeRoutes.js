@@ -7,6 +7,7 @@ import {
   getByIdRequestValidator,
   updateRequestValidator,
 } from '../validators/RecipeValidat.js ';
+
 const router = express.Router();
 
 router.get('/recipes', RecipeController.getAllRecipes);
