@@ -43,7 +43,7 @@ Pour configurer le projet, suivez ces étapes :
    Ouvrez le terminal dans le dossier courant, copiez le commande ci-dessous en remplaçant `UserName` par votre `nom d'utilisateur`
 
 ```bash
-  mysql -u UserName -p script_recipes < script_recipes.sql
+  mysql -u UserName -p script < script.sql
 ```
 
 2. Créez une copie du fichier `.env.example` puis renommer le fichier en `.env` à la racine du projet et mettez vos information pour configuration de la connexion à la base de données :
