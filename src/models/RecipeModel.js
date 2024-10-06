@@ -36,7 +36,6 @@ class RecipeModel {
   }
 
   static async update(id, updatedData) {
-
     const recipe = await this.getById(id);
     if (!recipe) {
       return { affectedRows: 0 };
@@ -57,7 +56,7 @@ class RecipeModel {
   static async delete(id) {
     const query = 'DELETE FROM recipes WHERE id = ?';
     const [result] = await db.query(query, [id]);
-    return { affectedRows: result.affectedRows }; 
+    return { affectedRows: result.affectedRows };
   }
 
   static async getAll() {

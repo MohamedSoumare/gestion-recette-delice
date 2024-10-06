@@ -68,7 +68,6 @@ L'API sera accessible à l'adresse `http://localhost:3090`
   }
 ```
 
-
 2. Voir les détails d'une recette
 
 - Méthode : GET
@@ -91,7 +90,6 @@ L'API sera accessible à l'adresse `http://localhost:3090`
 }
 ```
 
-
 3. Créer une recette
 
 - Méthode : POST
@@ -108,6 +106,7 @@ L'API sera accessible à l'adresse `http://localhost:3090`
 ```
 
 - Réponse :
+
 ```bash
 {
     "message": "Recette créée avec succès"
@@ -156,7 +155,7 @@ L'API sera accessible à l'adresse `http://localhost:3090`
 
 Pour tester les différents endpoints de l'API, vous pouvez utiliser la collection Postman incluse dans ce projet. Elle contient toutes les requêtes configurées pour interagir avec l'API.
 
-- **Importer dans Postman** le fichier  `collection-express-api.postman_collection.json` qui se trouve a la racine du projet et exécuter les url.
+- **Importer dans Postman** le fichier `collection-express-api.postman_collection.json` qui se trouve a la racine du projet et exécuter les url.
 
 ## Tests
 
@@ -183,9 +182,10 @@ Ce projet utilise **ESLint** pour le linting du code et **Prettier** pour le for
 ```
 
 ## Conteneurisation et déploiement.
-## Docker 
 
-- Pour exécutez docker compose veuillez ouvrir le fichier `.env` que vous avez puis  remplacer le   `DB_HOST=localhost ` par  `DB_HOST=db` puis exécuter la commande suivante :
+## Docker
+
+- Pour exécutez docker compose veuillez ouvrir le fichier `.env` que vous avez puis remplacer le `DB_HOST=localhost ` par `DB_HOST=db` puis exécuter la commande suivante :
 
 1. Builder l'image docker:
 
@@ -198,6 +198,7 @@ Ce projet utilise **ESLint** pour le linting du code et **Prettier** pour le for
 ```bash
   docker compose up -d
 ```
+
 3. Exécutez la commande suivante dans le terminal pour vous connecter au service MySQL:
 
 ```bash
