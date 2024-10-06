@@ -156,7 +156,7 @@ L'API sera accessible à l'adresse `http://localhost:3090`
 
 Pour tester les différents endpoints de l'API, vous pouvez utiliser la collection Postman incluse dans ce projet. Elle contient toutes les requêtes configurées pour interagir avec l'API.
 
-- **Importer dans Postman** le fichier collection api `recettes_collection.json` et exécuter les requêtes.
+- **Importer dans Postman** le fichier  `collection-express-api.postman_collection.json` qui se trouve a la racine du projet et exécuter les url.
 
 ## Tests
 
