@@ -55,7 +55,7 @@ L'API sera accessible à l'adresse `http://localhost:3090`
 1. Obtenir toutes les recettes
 
 - Méthode : GET
-- Endpoint : /recipes
+- URL : /recipes
 - Description : Récupère toutes les recettes de la base de données.
 - Réponse:
 
@@ -68,42 +68,65 @@ L'API sera accessible à l'adresse `http://localhost:3090`
   }
 ```
 
-2. Créer une recette
+
+2. Voir les détails d'une recette
+
+- Méthode : GET
+- URL : /recipes/:id
+- Description : Récupère la details d'une recette.
+- Réponse:
+
+```bash
+ {
+        "id": 1,
+        "title": "Recette 1",
+        "ingredient": "Ingrédients de la recette 1",
+        "type": "Entrée",
+},
+{
+    "id": 2,
+    "title": "Recette 2",
+    "ingredient": "Ingrédients de la recette 2",
+    "type": "Plat"
+}
+```
+
+
+3. Créer une recette
 
 - Méthode : POST
-- Endpoint : /recipes/add
+- URL : /recipes/add
 - Description : Ajoute une nouvelle recette dans la base de données.
 - Corps de la requette :
 
 ```bash
   {
-   "title": "Tarte aux pommes maison",
-  "ingredient": "Lait, Poulet, Parmesan, Croutons, Sucre",
-  "type": "Dessert",
-
+   "title": "Nouvelle Recette",
+    "ingredient": "Ingrédients de la nouvelle recette",
+    "type": "Plat"
 }
 ```
 
 - Réponse :
-
 ```bash
 {
     "message": "Recette créée avec succès"
 }
+
 ```
 
-3. Mettre à jour une recette
+4. Mettre à jour une recette
 
 - Méthode : PUT
-- Endpoint : /recipes/edit/:id
+- URL : /recipes/edit/:id
 - Description : Met à jour une recette par son ID.
 - Corps :
 
 ```bash
 {
-        "title": "Tarte aux pommes maison",
-        "ingredient": "Laitue,Poulet, Parmesan, Croutons",
-        "type": "entrée",
+      "title": "Recette Modifiée",
+      "ingredient": "Ingrédients de la recette modifiée",
+      "type": "Dessert"
  }
 
 ```
@@ -119,7 +142,7 @@ L'API sera accessible à l'adresse `http://localhost:3090`
 5. Supprimer une recette.
 
 - Méthode : DELETE
-- Endpoint : /recipes/delete/:id
+- URL : /recipes/delete/:id
 - Description : Supprime une recette par son ID.
   -Réponse :
 
@@ -164,19 +187,22 @@ Ce projet utilise **ESLint** pour le linting du code et **Prettier** pour le for
 
 - Pour exécutez docker compose veuillez ouvrir le fichier `.env` que vous avez puis  remplacer le   `DB_HOST=localhost ` par  `DB_HOST=db` puis exécuter la commande suivante :
 
-1. Lancer les conteneurs existants avec Docker compose :
+1. Builder l'image docker:
 
 ```bash
-   docker-compose up --build
+   docker compose build
 ```
 
-2. Lancer les conteneurs existants
-   avec Docker compose:
+2. Lancer le conteneurc
 
 ```bash
-  docker-compose up -d
+  docker compose up -d
 ```
+3. Exécutez la commande suivante dans le terminal pour vous connecter au service MySQL:
 
+```bash
+  docker exec -it nom_du_conteneur_mysql  mysql -u root -p
+```
 
 ## Auteurs
 

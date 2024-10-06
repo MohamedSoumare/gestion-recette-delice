@@ -8,7 +8,6 @@ class RecipeModel {
         throw new Error(`La recette avec le titre "${title}" existe déjà.`);
       }
 
-      // Si elle n'existe pas, on l'ajoute
       const [result] = await db.query(
         'INSERT INTO recipes (title, ingredient, type) VALUES (?, ?, ?)',
         [title, ingredient, type]
@@ -37,13 +36,12 @@ class RecipeModel {
   }
 
   static async update(id, updatedData) {
-    // Vérifie d'abord si la recette existe
+
     const recipe = await this.getById(id);
     if (!recipe) {
-      return { affectedRows: 0 }; // Si la recette n'existe pas, retourne 0
+      return { affectedRows: 0 };
     }
 
-    // Si la recette existe, on continue la mise à jour
     const query =
       'UPDATE recipes SET title = ?, type = ?, ingredient = ? WHERE id = ?';
     const [result] = await db.query(query, [
@@ -53,13 +51,13 @@ class RecipeModel {
       id,
     ]);
 
-    return { affectedRows: result.affectedRows }; // Retourne le nombre de lignes affectées
+    return { affectedRows: result.affectedRows };
   }
 
   static async delete(id) {
     const query = 'DELETE FROM recipes WHERE id = ?';
     const [result] = await db.query(query, [id]);
-    return { affectedRows: result.affectedRows }; // Retourne le nombre de lignes affectées
+    return { affectedRows: result.affectedRows }; 
   }
 
   static async getAll() {
@@ -67,5 +65,4 @@ class RecipeModel {
     return rows;
   }
 }
-
 export default RecipeModel;
