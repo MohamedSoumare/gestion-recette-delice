@@ -1,6 +1,6 @@
 import { check, param, validationResult } from 'express-validator';
 import { StatusCodes } from 'http-status-codes';
-import RecipeModel from '../models/RecipeModel.js ';
+import RecipeModel from '../models/RecipeModel.js';
 
 const handleValidationErrors = (req, res, next) => {
   const errors = validationResult(req);

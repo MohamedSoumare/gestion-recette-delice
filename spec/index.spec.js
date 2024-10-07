@@ -1,4 +1,4 @@
-import RecipeModel from '../src/models/RecipeModel.js ';
+import RecipeModel from '../src/models/RecipeModel.js';
 
 describe('Recipe tests', () => {
   let recipeId = null;

@@ -1,4 +1,4 @@
-import RecipeModel from '../models/RecipeModel.js ';
+import RecipeModel from '../models/RecipeModel.js';
 
 class RecipeController {
   static async getAllRecipes(req, res, next) {
